@@ -1,0 +1,63 @@
+<h1 class="page-header">{{title}}</h1>
+<h2 ng-if="message"></h2>
+<div class="list-group">
+  <a ng-repeat="item in subjects"  href="#/detail/{{item.id}}" href="#" class="list-group-item">
+    <span class="badge">{{item.rating.average}}</span>
+    <div class="media">
+      <div class="media-left">
+        <img class="media-object" ng-src="{{item.images.small}}" alt="item.title" height="128">
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading">{{item.title}}</h3>
+        <p>
+          类型：<span>{{item.genres.join("、")}}</span>&nbsp;&nbsp;&nbsp;&nbsp; 上映年份：
+          <span>{{item.year}}</span></p>
+        <p>
+          导演：
+          <span ng-repeat="director in item.directors">
+            {{director.name}}{{$last?'':''}}
+            <!-- <span ng-if="!$last">、</span> -->
+          </span>
+        </p>
+        <p>
+          主演：
+          <span ng-repeat="cast in item.casts">
+            {{cast.name + ($last?'':'、')}}
+            <!-- <span ng-if="!$last">、</span> -->
+          </span>
+        </p>
+      </div>
+    </div>
+  </a>
+</div>
+<div ng-show="!loading">
+  <p>总共：&nbsp;{{totalCount}}&nbsp;条记录，当前是第&nbsp;{{currentPageNum}}&nbsp;页，共&nbsp;{{totalPage}}&nbsp;页</p>
+  <nav aria-label="Page navigation" class="init-nav">
+    <ul class="pagination" class="center-block">
+      <li ng-class="{disabled: currentPageNum===1}" ng-click="previousPage(currentPageNum)">
+        <a href="" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li ng-repeat="page in pageNav" ng-class="{active: page.pageNum==currentPageNum}" ng-click="goPage(page.pageNum)"><a href="" >{{page.pageNum}}</a></li>
+      <li ng-class="{disabled: currentPageNum>=totalPage}" ng-click="nextPage(currentPageNum)">
+        <a href="" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="load-animation" ng-show="loading">
+  <div class="sk-cube-grid">
+    <div class="sk-cube sk-cube1"></div>
+    <div class="sk-cube sk-cube2"></div>
+    <div class="sk-cube sk-cube3"></div>
+    <div class="sk-cube sk-cube4"></div>
+    <div class="sk-cube sk-cube5"></div>
+    <div class="sk-cube sk-cube6"></div>
+    <div class="sk-cube sk-cube7"></div>
+    <div class="sk-cube sk-cube8"></div>
+    <div class="sk-cube sk-cube9"></div>
+  </div>
+</div>

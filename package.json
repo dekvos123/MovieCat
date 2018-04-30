@@ -1,0 +1,23 @@
+{
+  "name": "moviecat",
+  "version": "1.0.0",
+  "description": "learn angular",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greyu/MovieCat.git"
+  },
+  "author": "greyu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/greyu/MovieCat/issues"
+  },
+  "homepage": "https://github.com/greyu/MovieCat#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1"
+  }
+}
